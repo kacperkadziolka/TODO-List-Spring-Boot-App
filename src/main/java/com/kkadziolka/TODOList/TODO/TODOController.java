@@ -31,4 +31,10 @@ public class TODOController {
         todoService.postTODO(todo);
     }
 
+    @PutMapping(path = "{todoId}")
+    public void updateTODOStatus(@PathVariable("todoId") Long todoId,
+                                 @RequestParam boolean status) {
+        todoService.updateTODOStatus(todoId, status);
+    }
+
 }

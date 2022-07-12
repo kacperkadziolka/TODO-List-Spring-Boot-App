@@ -2,9 +2,9 @@ package com.kkadziolka.TODOList.TODO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TODOService {
@@ -30,5 +30,12 @@ public class TODOService {
             throw new IllegalStateException("You have already add this task into TODO list");
         }
         todoRepository.save(todo);
+    }
+
+    @Transactional
+    public void updateTODOStatus(Long todoId, boolean status) {
+        TODO todo = todoRepository.findById(todoId)
+                .orElseThrow(() -> new IllegalStateException("task doesn't exits"));
+        todo.setStatus(status);
     }
 }

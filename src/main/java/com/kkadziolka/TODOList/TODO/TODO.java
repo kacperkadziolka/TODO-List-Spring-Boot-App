@@ -32,6 +32,8 @@ public class TODO {
     @NonNull
     private LocalDate deadlineDate;
 
+    private boolean status = false;
+
     public LocalDate getCreateDate() {
         return LocalDate.now();
     }
