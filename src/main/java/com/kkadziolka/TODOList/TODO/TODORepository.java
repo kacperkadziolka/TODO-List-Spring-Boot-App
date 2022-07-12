@@ -5,4 +5,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TODORepository extends JpaRepository<TODO, Long> {
+
+    TODO findByTitle(String title);
 }

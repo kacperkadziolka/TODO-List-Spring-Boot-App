@@ -1,9 +1,7 @@
 package com.kkadziolka.TODOList.TODO;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +19,16 @@ public class TODOController {
     @GetMapping
     public List<TODO> getTODOs() {
         return todoService.getTODOs();
+    }
+
+    @DeleteMapping(path = "{todoId}")
+    public void deleteTODO(@PathVariable("todoId") Long todoId) {
+        todoService.deleteTODO(todoId);
+    }
+
+    @PostMapping
+    public void postTODO(@RequestBody TODO todo) {
+        todoService.postTODO(todo);
     }
 
 }

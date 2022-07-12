@@ -26,10 +26,13 @@ public class TODO {
     @NonNull
     private String description;
 
-    @NonNull
+    @Transient
     private LocalDate createDate;
 
     @NonNull
     private LocalDate deadlineDate;
 
+    public LocalDate getCreateDate() {
+        return LocalDate.now();
+    }
 }
